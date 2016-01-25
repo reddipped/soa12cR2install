@@ -1,0 +1,26 @@
+#/bin/bash
+
+
+export instjar=fmw_12.2.1.0.0_oep.jar
+export instrsp=oep.rsp
+
+
+
+echo "Start installation"
+if [ -f $instjar ] ; then
+  if [ -f $instrsp ] ; then
+
+    java -Xmx1024m -jar ${instjar} -silent -responseFile $(pwd)/${instrsp} -invPtrLoc /u01/app/oraInst.loc
+    echo "Install done, start config"
+  else
+    echo "responsfile \"$instrsp\" not found"
+    exit 255
+  fi
+else
+  echo "installer \"$instjar\" not found"
+  exit 255
+fi
+echo "Done!"
+
+echo "Install the Adobe Flash Player"
+sudo -s rpm -ihv flash-plugin-*.x86_64.rpm

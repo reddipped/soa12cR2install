@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bea-installer xmlns="http://www.bea.com/plateng/wlevs/config/silent">
+  <input-fields>
+    <data-value name="CONFIGURATION_OPTION" value="createDomain" />
+    <data-value name="USERNAME" value="weblogic" />
+    <data-value name="PASSWORD" value="welcome1" />
+    <data-value name="SERVER_NAME" value="oep_server1" />
+    <data-value name="DOMAIN_NAME" value="oep12c" />
+    <data-value name="DOMAIN_LOCATION"
+           value="/u01/data/domains/" />
+    <data-value name="NETIO_PORT" value="9002" />
+    <data-value name="KEYSTORE_PASSWORD" value="welcome1" />
+    <data-value name="PRIVATEKEY_PASSWORD" value="welcome1" />
+    <!--
+    When configuring a datasource during the silent install exceptions will
+    be thrown when starting the standalone server reporting that the ds cannot be found.
+    <data-value name="DB_URL" value="jdbc:bea:oracle://vm0004.localdomain:1521:ORCLDB12C" />
+    <data-value name="DB_USERNAME" value="oep_db_user" />
+    <data-value name="DB_PASSWORD" value="welcome1" />
+  -->
+  </input-fields>
+</bea-installer>

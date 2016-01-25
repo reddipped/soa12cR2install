@@ -1,0 +1,25 @@
+#!/bin/bash
+
+## create firefox defaults
+firefox &
+sleep 10
+killall firefox
+
+## Installing new bookmarks
+export sourcedir=$(pwd)
+
+echo "Install bookmarks"
+
+cd ~/.mozilla/firefox/*.default/
+cp ${sourcedir}/bookmarks.bkp .
+${sourcedir}/sqlite3 ./places.sqlite <<EOF
+.restore bookmarks.bkp
+.quit
+EOF
+
+## Configure firefox
+echo "Configure firefox"
+cp ${sourcedir}/xulstore.json .
+cp ${sourcedir}/prefs.js .
+
+
