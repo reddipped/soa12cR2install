@@ -7,6 +7,11 @@
 Download "V78172-01.zip" from edelivery.oracle.com and unzip the files
 in this folder. If expanded correctly the file "fmw_12.2.1.0.0_oep.jar" will have been created in folder.
 
+## Oracle Stream Explorer Samples
+Download sxsamplesv1-1-2612947.zip or more recent version from OTN. It is available on the
+Oracle Stream Explorer & Oracle Edge Analytics Downloads page in the Stream Explorer 12.2.1 Runtime section.
+http://www.oracle.com/technetwork/middleware/complex-event-processing/downloads/downloads-086608.html
+
 ## Adobe Flash
 Get the latest flashplayer from http://get.adobe.com/flashplayer. Download the Linux (64-bit) Flash player
 for other Linux (.rpm 64-bit) in this folder.

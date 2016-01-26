@@ -31,6 +31,9 @@ echo "Creating domain"
 cd $oracle_home
 ./config.sh -mode=silent -silent_xml=${rsp_location}/oep_domain_config.xml -log=/tmp/create_oep_domain.log
 
+echo "Install SX Samples"
+cp sxsamples*.zip /u01/data/domains/oep12c/oep_server1/sx_patches
+
 echo "Creating control scripts"
 cat <<EOF > /u01/data/domains/oep12c/oep_server1/startoep.sh
 cd /u01/data/domains/oep12c/oep_server1
