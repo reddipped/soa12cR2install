@@ -11,12 +11,8 @@
     <data-value name="NETIO_PORT" value="9002" />
     <data-value name="KEYSTORE_PASSWORD" value="welcome1" />
     <data-value name="PRIVATEKEY_PASSWORD" value="welcome1" />
-    <!--
-    When configuring a datasource during the silent install exceptions will
-    be thrown when starting the standalone server reporting that the ds cannot be found.
-    <data-value name="DB_URL" value="jdbc:bea:oracle://vm0004.localdomain:1521:ORCLDB12C" />
+    <data-value name="DB_URL" value="jdbc:oracle:thin:@localhost.localdomain:1521:ORCLDB12C" />
     <data-value name="DB_USERNAME" value="oep_db_user" />
     <data-value name="DB_PASSWORD" value="welcome1" />
-  -->
   </input-fields>
 </bea-installer>

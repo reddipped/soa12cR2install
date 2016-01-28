@@ -10,6 +10,7 @@ echo "Start configuration"
 echo "Create DB User"
 sqlresult=$(sqlplus sys/welcome1  as sysdba <<EOF
 CREATE USER oep_db_user IDENTIFIED BY welcome1;
+GRANT CREATE SESSION TO oep_db_user;
 exit;
 EOF
 )
@@ -32,7 +33,8 @@ cd $oracle_home
 ./config.sh -mode=silent -silent_xml=${rsp_location}/oep_domain_config.xml -log=/tmp/create_oep_domain.log
 
 echo "Install SX Samples"
-cp sxsamples*.zip /u01/data/domains/oep12c/oep_server1/sx_patches
+mkdir /u01/data/domains/oep12c/oep_server1/sx_patches
+cp ${rsp_location}/sxsamples*.zip /u01/data/domains/oep12c/oep_server1/sx_patches
 
 echo "Creating control scripts"
 cat <<EOF > /u01/data/domains/oep12c/oep_server1/startoep.sh
