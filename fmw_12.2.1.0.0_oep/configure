@@ -9,6 +9,7 @@ echo "Start configuration"
 
 echo "Create DB User"
 sqlresult=$(sqlplus sys/welcome1  as sysdba <<EOF
+DROP USER oep_db_user;
 CREATE USER oep_db_user IDENTIFIED BY welcome1;
 GRANT CREATE SESSION TO oep_db_user;
 exit;
@@ -32,8 +33,35 @@ echo "Creating domain"
 cd $oracle_home
 ./config.sh -mode=silent -silent_xml=${rsp_location}/oep_domain_config.xml -log=/tmp/create_oep_domain.log
 
+
+echo "Starting StreamExplorer domain"
+cd /u01/data/domains/oep12c/oep_server1
+
+nohup ./startwlevs.sh 2>/dev/null >/var/tmp/start_wlevs.out &
+sleep 2
+echo 'Starting StreamExplorer'
+tail -f /var/tmp/start_wlevs.out | while read LOGLINE
+do
+   [[ "${LOGLINE}" == *"Initiating Jersey application"* ]] && pkill -P $$ tail
+   echo -en ">"
+done
+echo '-'
+echo 'Started StreamExplorer'
+sleep 5
+
+echo "Shutting down StreamExplorer domain"
+nohup ./stopwlevs.sh 2>/dev/null >/var/tmp/stop_wlevs.out &
+echo 'Stopping StreamExplorer'
+tail -F /u01/data/domains/oep12c/oep_server1/server.log | while read LOGLINE
+do
+   [[ "${LOGLINE}" == *"Server STOPPED"* ]] && pkill -P $$ tail
+   echo -en ">"
+done
+echo '-'
+echo 'Stopped StreamExplorer'
+sleep 5
+
 echo "Install SX Samples"
-mkdir /u01/data/domains/oep12c/oep_server1/sx_patches
 cp ${rsp_location}/sxsamples*.zip /u01/data/domains/oep12c/oep_server1/sx_patches
 
 echo "Creating control scripts"
