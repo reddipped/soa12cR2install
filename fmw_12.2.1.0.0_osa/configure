@@ -1,0 +1,107 @@
+#/bin/bash
+
+export rsp_location=$(pwd)
+export oracle_home=/u01/app/oracle/product/12.2.1/OSA/oep/common/bin
+export ORACLE_BASE=/u01/app/oracle
+export MW_HOME=${ORACLE_BASE}/product/12.2.1/OSA
+
+echo "Start configuration"
+
+echo "Create DB User"
+sqlresult=$(sqlplus sys/welcome1  as sysdba <<EOF
+DROP USER osa_db_user;
+CREATE USER osa_db_user IDENTIFIED BY welcome1;
+GRANT CREATE SESSION TO osa_db_user;
+exit;
+EOF
+)
+
+if [[ $sqlresult =~ "User created" ]] ;
+then
+  echo "Successfully created database user osa_db_user"
+else
+  echo "Failed creating database user osa_db_user\n\n" ;
+  echo -e "Examine output below for details;\n\n"
+  printf '=%.0s' {1..80}
+  echo "$sqlresult" | sed 's/^/\t/'
+  printf '=%.0s' {1..80}
+  echo -e "\n"
+  exit
+fi
+
+echo "Creating domain"
+cd $oracle_home
+./config.sh -mode=silent -silent_xml=${rsp_location}/osa_domain_config.xml -log=/tmp/create_osa_domain.log
+
+
+echo "Starting StreamAnalytics domain"
+cd /u01/data/domains/osa12c/osa_server1
+
+nohup ./startwlevs.sh 2>/dev/null >/var/tmp/start_wlevs.out &
+sleep 2
+echo 'Starting StreamAnalytics'
+tail -f /var/tmp/start_wlevs.out | while read LOGLINE
+do
+   [[ "${LOGLINE}" == *"Initiating Jersey application"* ]] && pkill -P $$ tail
+   echo -en ">"
+done
+echo '-'
+echo 'Started StreamAnalytics'
+sleep 5
+
+echo "Shutting down StreamAnalytics domain"
+nohup ./stopwlevs.sh 2>/dev/null >/var/tmp/stop_wlevs.out &
+echo 'Stopping StreamAnalytics'
+tail -F /u01/data/domains/osa12c/osa_server1/server.log | while read LOGLINE
+do
+   [[ "${LOGLINE}" == *"Server STOPPED"* ]] && pkill -P $$ tail
+   echo -en ">"
+done
+echo '-'
+echo 'Stopped StreamAnalytics'
+sleep 5
+
+echo "Install Default SX Samples "
+mv ${MW_HOME}/oep/modules/sx-common-oep.jar ${MW_HOME}/oep/modules/sx-common-oep.jar.obsolete
+cp ${rsp_location}/V*/p23124772_122100_Generic/sx-common-oep.jar ${MW_HOME}/oep/modules
+cp ${rsp_location}/V*/p23124772_122100_Generic/osaSamples*.zip /u01/data/domains/osa12c/osa_server1/sx_patches
+
+echo "Creating control scripts"
+cat <<EOF > /u01/data/domains/osa12c/osa_server1/startosa.sh
+cd /u01/data/domains/osa12c/osa_server1
+./startwlevs.sh
+EOF
+chmod u+x /u01/data/domains/osa12c/osa_server1/startosa.sh
+
+cat <<EOF > /u01/data/domains/osa12c/osa_server1/stoposa.sh
+cd /u01/data/domains/osa12c/osa_server1
+./stopwlevs.sh
+EOF
+chmod u+x /u01/data/domains/osa12c/osa_server1/stoposa.sh
+
+
+sudo -E bash -c 'cat > /usr/share/applications/StartStreamAnalytics.desktop <<EOF
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name[en_US]=Start Stream Analytics
+Exec=/u01/data/domains/osa12c/osa_server1/startosa.sh
+Name=Start Stream Analytics
+Categories=FusionMiddleware
+EOF'
+
+sudo -E bash -c 'cat > /usr/share/applications/StopStreamAnalytics.desktop <<EOF
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name[en_US]=Stop Stream Analytics
+Exec=/u01/data/domains/osa12c/osa_server1/stoposa.sh
+Name=Stop Stream Analytics
+Categories=FusionMiddleware
+EOF'

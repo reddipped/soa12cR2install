@@ -1,19 +1,15 @@
 ################################################################################
-# Download and preparation 
+# Download and preparation
 ################################################################################
 
 
 ## Oracle Fusion Middleware 12c (12.2.1.0.0) SOA Suite and Business Process Management
-Download "V78169-01.zip from edelivery.oracle.com and unzip the file "V78169-01.zip"
-in this folder. If expanded correctly a file "fmw_12.2.1.0.0_soa.jar" 
+Download "V78169-01.zip" from edelivery.oracle.com and unzip the file "V78169-01.zip"
+in this folder. If expanded correctly a file "fmw_12.2.1.0.0_soa.jar"
 will have been created.
 
 
 ## Oracle Fusion Middleware 12c (12.2.1.0.0) Service Bus
 Download "V78173-01.zip" from edelivery.oracle.com and unzip the file "V78173-01.zip"
-in this folder. If expanded correctly a file "fmw_12.2.1.0.0_osb.jar" 
+in this folder. If expanded correctly a file "fmw_12.2.1.0.0_osb.jar"
 will have been created.
-
-
-
-

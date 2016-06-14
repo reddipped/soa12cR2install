@@ -30,7 +30,7 @@ SOFTWARE_UPDATES_PROXY_USER=
 SOFTWARE_UPDATES_PROXY_PASSWORD=<SECURE VALUE>
 
 #The oracle home location. This can be an existing Oracle Home or a new Oracle Home
-ORACLE_HOME=/u01/app/oracle/product/12.2.1/OEP
+ORACLE_HOME=/u01/app/oracle/product/12.2.1/OSA
 
 #Set this variable value to the Installation Type selected. e.g. Event Processing, Event Processing With Examples.
-INSTALL_TYPE=Event Processing With Examples
+INSTALL_TYPE=Stream Analytics With Examples

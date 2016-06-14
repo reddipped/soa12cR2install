@@ -1,9 +1,9 @@
-VirtualBox with SOA, BPM, OSB and BAM in 33 minutes
+VirtualBox with SOA, BPM, OSB, BAM and Stream Analytics in 33 minutes
 ===================================================
 
 
 # For detailed installation instructions
 
-[VirtualBox with SOA, BPM, OSB and BAM in 33 minutes] [lnk]
+[VirtualBox with SOA, BPM, OSB, BAM and Stream Analytics in 33 minutes] [lnk]
 
-[lnk]: http://www.reddipped.com/2015/12/virtualbox-soa-bpm-osb-bam-33-minutes/ "reddipped.com"
+[lnk]: http://www.reddipped.com/2016/01/virtualbox-with-soa-12cr2-and-streamexplorer-in-33-minutes/ "reddipped.com"
