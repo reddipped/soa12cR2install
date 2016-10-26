@@ -1,12 +1,12 @@
 #/bin/bash
 
 
-export instjar=fmw_12.2.1.0.0_osa_generic.jar
+export instjar=fmw_12.2.1.2.0_osa.jar
 export instrsp=$(pwd)/osa.rsp
 
 curdir=$(pwd)
 
-cd V137915-01
+cd V789397-01
 
 echo "Start installation"
 if [ -f $instjar ] ; then

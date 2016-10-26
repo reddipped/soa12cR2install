@@ -1,7 +1,7 @@
 #/bin/bash
 
 
-export instjar=fmw_12.2.1.0.0_bpm_quickstart.jar
+export instjar=fmw_12.2.1.2.0_bpm_quickstart.jar
 export instrsp=jdev_qs.rsp
 
 

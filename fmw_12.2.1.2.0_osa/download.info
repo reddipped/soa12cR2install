@@ -3,10 +3,10 @@
 ################################################################################
 
 
-## Oracle Stream Analytics (12.2.1.0.0)
-Download "V137915-01.zip" from edelivery.oracle.com and unzip the file.
-in this folder. If expanded correctly the folder "V137915-01" will have been created containing the installation files.
-Now unzip the file p23124772_122100_Generic.zip in the V137915-01 folder.
+## Oracle Stream Analytics (12.2.1.2.0)
+Download "V789397-01.zip" from edelivery.oracle.com and unzip the file.
+in this folder. If expanded correctly the folder "V789397-01" will have been created containing the installation files.
+
 
 ## Oracle Stream Explorer Samples
 Download osasamples-3000400.zip or more recent version from OTN. It is available on the

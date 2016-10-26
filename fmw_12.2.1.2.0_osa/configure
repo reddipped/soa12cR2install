@@ -63,8 +63,9 @@ sleep 5
 
 echo "Install Default SX Samples "
 mv ${MW_HOME}/oep/modules/sx-common-oep.jar ${MW_HOME}/oep/modules/sx-common-oep.jar.obsolete
-cp ${rsp_location}/V*/p23124772_122100_Generic/sx-common-oep.jar ${MW_HOME}/oep/modules
-cp ${rsp_location}/V*/p23124772_122100_Generic/osaSamples*.zip /u01/data/domains/osa12c/osa_server1/sx_patches
+#cp ${rsp_location}/V*/p23124772_122100_Generic/sx-common-oep.jar ${MW_HOME}/oep/modules
+#cp ${rsp_location}/V*/p23124772_122100_Generic/osaSamples*.zip /u01/data/domains/osa12c/osa_server1/sx_patches
+cp ${rsp_location}/osasamples*.zip /u01/data/domains/osa12c/osa_server1/sx_patches
 
 echo "Creating control scripts"
 cat <<EOF > /u01/data/domains/osa12c/osa_server1/startosa.sh

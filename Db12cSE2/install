@@ -170,7 +170,7 @@ if [ -d $DBINSTFILESDIR ] ; then
 
     echo -e "${SEPS}"
     echo "# Start install as ${SUDO_USER}"
-    sudo -u $SUDO_USER -s database/runInstaller -waitforcompletion -silent -responsefile /tmp/${INSTRSP}
+    sudo -u $SUDO_USER -s database/runInstaller -waitforcompletion -silent -responsefile /tmp/${INSTRSP} SECURITY_UPDATES_VIA_MYORACLESUPPORT=false DECLINE_SECURITY_UPDATES=true
     echo -e "${SEPE}"
 
     echo -e "${SEPS}"

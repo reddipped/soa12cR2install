@@ -30,14 +30,10 @@ runinstall() {
 
 echo "Installing SOA and BPM"
 export instrsp="bpm.rsp"
-export instrpm="fmw_12.2.1.0.0_soa.jar" 
+export instrpm="fmw_12.2.1.2.0_soa.jar"
 runinstall
 
 echo "Installing OSB"
 export instrsp="osb.rsp"
-export instrpm="fmw_12.2.1.0.0_osb.jar" 
+export instrpm="fmw_12.2.1.2.0_osb.jar" 
 runinstall
-
-
-
-
