@@ -1,0 +1,16 @@
+################################################################################
+# Download and preparation
+################################################################################
+
+
+## Oracle Fusion Middleware 12c (12.2.1.3.0) Business Process Management Quick Start for Developers
+Download "Oracle BPM Suite 12.2.1.3 Disk 1 of 2" and "Oracle BPM Suite 12.2.1.3 Disk 2 of 2" from otn.oracle.com
+(http://www.oracle.com/technetwork/middleware/bpm/downloads/index.html).
+and unzip the files in this folder.
+If expanded correctly the files "fmw_12.2.1.3.0_bpm_quickstart.jar" and  "fmw_12.2.1.3.0_bpm_quickstart2.jar" will have been created in folder.
+
+## OR
+
+## Oracle Fusion Middleware 12c (12.2.1.3.0) Business Process Management Quick Start for Developers
+Download "V886443-01_1of2.zip" and "V886443-01_2of2.zip" from edelivery.oracle.com and unzip the files
+in this folder. If expanded correctly the files "fmw_12.2.1.3.0_bpm_quickstart.jar" and  "fmw_12.2.1.3.0_bpm_quickstart2.jar" will have been created in folder.

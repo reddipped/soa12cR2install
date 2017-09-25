@@ -1,12 +1,12 @@
 #/bin/bash
 
 
-export instjar=fmw_12.2.1.2.0_osa.jar
+export instjar=fmw_12.2.1.3.0_osa.jar
 export instrsp=$(pwd)/osa.rsp
 
 curdir=$(pwd)
 
-cd V789397-01
+cd V886444-01
 
 echo "Start installation"
 if [ -f $instjar ] ; then
@@ -26,4 +26,4 @@ echo "Done!"
 cd $curdir
 
 echo "Install the Adobe Flash Player"
-sudo -s rpm -ihv flash-plugin-*.x86_64.rpm
+sudo -s rpm -ihv flash-player-*.x86_64.rpm

@@ -3,8 +3,8 @@
 ################################################################################
 
 
-## Oracle Fusion Middleware Infrastructure 12.2.1.2.0
-Download the file "V779122-01.zip" from edelivery.oracle.com and unzip the file.
+## Oracle Fusion Middleware Infrastructure 12.2.1.3.0
+Download the file "V886426-01.zip" from edelivery.oracle.com and unzip the file.
 (http://www.oracle.com/technetwork/developer-tools/adf/downloads/index.html) and unzip the file
-in this folder. If expanded correctly a file "V779122-01/fmw_12.2.1.2.0_infrastructure.jar"
+in this folder. If expanded correctly a file "V886426-01/fmw_12.2.1.3.0_infrastructure.jar"
 will have been created. Move the file to the same folder as where the install script is located.
